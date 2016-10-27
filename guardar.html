@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="estilos.css" type="text/css">
+    <script src="mapa.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlTbgAInF4Zhu8Y4ZM0K6WuGlzs0O_9GY"></script>
+    <title>Guardar</title>
+</head>
+<body>
+    <div id="mapa" class="mapa2"></div>
+    <div id="contenido">
+      
+       <label>Nombre</label><input type="text" name="Nombre" id="nombre">
+       
+       <label>Descripción</label><textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+       <label>Tipo</label>
+       
+        <select id="selector">
+           <option value="1">Cerveza</option>
+           <option value="2">Cerveza</option>
+           <option value="3">Cerveza</option>
+           <option value="4">Cerveza</option>
+       </select>
+       <label>Presupuesto</label><input type="number" id="presu">
+       <label>Horario</label><input type="time" id="tiempo">
+       <button onclick="guardar()">Guardar</button>
+    </div>
+</body>
+
+<script>
+    function guardar(){
+        u = document.getElementById("nombre").value;
+        p = document.getElementById("descripcion").value;
+        q = document.getElementById("selector").value;
+        r = document.getElementById("presu").value;
+        s = document.getElementById("tiempo").value;
+        
+        if(!localStorage.getItem('contador')){
+            localStorage.setItem('contador', 0);
+        }
+        
+        contador = localStorage.getItem('contador');
+        
+        console.log(contador);
+        
+        if(u != "" && p != "" && q != "" && r != "" && s != ""){
+            localStorage.setItem('nombre'+contador, u);
+            localStorage.setItem('descripcion'+contador, p);
+            localStorage.setItem('selector'+contador, q);
+            localStorage.setItem('presupuesto'+contador, r);
+            localStorage.setItem('tiempo'+contador, s);
+
+            contador++;
+
+            localStorage.setItem('contador', contador);
+
+            alert("Entrada guardada");
+        }
+        else{
+            alert("Hay uno o más campos vacíos");
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="estilos.css" type="text/css">
+    <title>MauriMaps</title>
+</head>
+<body>
+     <div id="login-mayor">
+      <div id="login2">
+           <input type="text" id="usuario" name="nombre" class="campos" placeholder="Ingrese su nombre..."><br>
+           <input type="text" id="correo" name="correo" class="campos" placeholder="Ingrese su correo..."><br>
+           <input type="password" id="contra" name="pass" class="campos" placeholder="Contraseña..."><br><br>
+           <button class="boton" onclick="mapa()">Iniciar</button><br>
+           <button class="boton" onclick="index()">Regresar</button>
+       </div>
+       <img src="location.svg" alt="location" id="imagen">
+       <p>MauriMaps</p>
+    </div>
+<script>
+    function mapa(){
+        u = document.getElementById("usuario").value;
+        p = document.getElementById("correo").value;
+        e = document.getElementById("contra").value;
+        
+        if(!localStorage.getItem('contador')){
+            localStorage.setItem('contador', 0);
+        }
+        
+        contador = localStorage.getItem('contador');
+        
+        console.log(contador);
+        
+        localStorage.setItem('usuario'+contador, u);
+        localStorage.setItem('correo'+contador, p);
+        localStorage.setItem('password'+contador, e);
+        
+        contador++;
+        
+        localStorage.setItem('contador', contador);
+    }
+    function index(){
+        window.location.assign("index.html");
+    }
+</script>
+</body>
+</html>
